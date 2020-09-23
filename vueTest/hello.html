@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+
+    <div id="app">
+        <p>{{msg}}</p>
+        <input type="text" v-model="msg">
+    </div>
+    <div class="static" v-bind:class="classObject"></div>
+
+    <ul id="example-1">
+        <li v-for="item in items" :key="item.k1">
+          {{ item.k1 }}
+        </li>
+      </ul>
+
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'vue.js'
+            },
+            classObject: {
+            active: true,
+            'text-danger': false
+  }
+        })
+
+        var example1 = new Vue({
+  el: '#example-1',
+  data: {
+    items: [
+      { k1: 'Foo' },
+      { k2: 'Bar' },
+      { k3: 'Boo' }
+    ]
+  }
+})
+
+    </script>
+
 </body>
+
 </html>

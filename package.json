@@ -1,0 +1,25 @@
+{
+  "name": "super-vue",
+  "version": "1.0.0",
+  "description": "learn vuejs ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haoyinghan/Test.git"
+  },
+  "author": "zyf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haoyinghan/Test/issues"
+  },
+  "homepage": "https://github.com/haoyinghan/Test#readme",
+  "dependencies": {
+    "vue": "^2.6.12"
+  },
+  "devDependencies": {
+    "eslint": "^7.9.0"
+  }
+}
