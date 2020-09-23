@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+    
     <div id="app">
         <p>{{msg}}</p>
         <input type="text" v-model="msg">
@@ -19,7 +19,13 @@
         <li v-for="item in items" :key="item.k1">
           {{ item.k1 }}
         </li>
-      </ul>
+     <span v-for="n in 10">{{ n }} </span>
+     </ul>
+
+     <div id="example-3">
+        <button v-on:click="say('hi')">Say hi</button>
+        <button v-on:click.once="say('what')">Say what</button>
+      </div>
 
 
     <script src="../node_modules/vue/dist/vue.js"></script>
@@ -43,6 +49,15 @@
       { k2: 'Bar' },
       { k3: 'Boo' }
     ]
+  }
+})
+
+new Vue({
+  el: '#example-3',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
   }
 })
 
