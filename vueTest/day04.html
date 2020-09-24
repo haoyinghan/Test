@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vueJS学习4 v-for 迭代</title>
+</head>
+
+<body>
+    <!--列表渲染-->
+    <div id="aa">
+        <h4>迭代数据</h4>
+        <ul id="example-1">
+            <li v-for="item in arraytests" :key="item.name">
+                {{ item.message }}
+            </li>
+        </ul>
+        <ul id="example-2">
+            <li v-for="(e,index) in arraytests" :key="index">
+               编号： {{ index+1 }}，姓名： {{ e.name}},介绍：{{e.message}}
+            </li>
+        </ul>
+        <h4>迭代对象</h4>
+        <ul id="example-3">
+            <li v-for="(value,key,index) in arraytests">
+               编号:{{ index+1 }}.{{key}}：{{value}}
+            </li>
+        </ul>
+    </div>
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#aa',
+            data: {
+
+                arraytests: [ //数组
+                    { name: '孙悟空', message: '战斗力：100w' },
+                    { name: '贝吉塔', message: '战斗力：99w' },
+                    { name: '比鲁斯', message: '战斗力：1000w' }
+                ]
+            }
+
+        })
+
+
+    </script>
+</body>
+
+</html>

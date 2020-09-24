@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!--vueJS简单指令的学习-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,11 @@
     <div id="app">
         <p>{{msg}}</p>
         <input type="text" v-model="msg">
+        <!-- <img v-bind:src="imgUrl">
+        <img :src="imgUrl"> -->
+        <H4>测试方法调用</H4>
+        <input type="text" v-model="num">
+        <button v-on:click="add">点击</button>
     </div>
     <div class="static" v-bind:class="classObject"></div>
 
@@ -33,12 +38,23 @@
         var vm = new Vue({
             el: '#app',
             data: {
-                msg: 'vue.js'
+                msg: 'vue.js',
+                imgUrl:'C:/Users/admin/Desktop/VueJS/logo.png',
+                num:2
             },
             classObject: {
             active: true,
             'text-danger': false
-  }
+            },
+            methods:{
+              add:function(){
+              console.log("测试");
+              vm.num++;
+              }
+
+            }
+
+            
         })
 
         var example1 = new Vue({

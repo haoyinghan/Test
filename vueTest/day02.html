@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--computed计算方法 和watch监视数据变化-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vueJS学习2</title>
+</head>
+
+<body>
+    <div id="day02_1">
+        <p>数学:<input type="text" v-model="text1"></p><!--v-model双向绑定数据-->
+        <p>英语:<input type="text" v-model="text2"></p><!--v-model双向绑定数据-->
+        <p>總分1:<input type="text" v-model="calc()"></p><!--methods 方法，只能单向绑定，不能双向-->
+        <p>總分2:<input type="text" v-model="cal"></p><!--computed 计算方法，默认就是get方法单向绑定-->
+        <p>總分3:<input type="text" v-model="call"></p><!--computed 计算方法，添加set方法实现双向绑定-->
+        <p>监听text3:<input type="text" v-model="text3"></p><!--监视当text1和text2的值发生变化时候，将变化后的值赋值给text3,监视有2中方式，第一种方式是在vue对象中追加watch方法
+          该方法有2个入力参数，是新入的值和以前的值。第二种方式是在vue对象外面，也是在调用watch方法(vm.$watch('text2',function(newValue){...})-->
+    </div>
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#day02_1',
+            data: {
+                text1: 90,
+                text2: 90,
+                text3: 900
+            },
+            methods: {
+                calc: function () {
+                    console.log('方法被调用');
+                    return (this.text1 - 0) + (this.text2 - 0) 
+                }
+            },
+            computed: {
+                cal: function () {
+                    console.log('计算被调用');
+                    return (this.text1 - 0) + (this.text2 - 0) 
+                },
+                call:{
+                get:function(){
+                    console.info('call中的get方法被调用');
+                    return (this.text1 - 0) + (this.text2 - 0) 
+                },
+                set:function(newVule){
+                    console.info('call中的set方法被调用');
+                     var av = newVule/2;
+                     this.text1=av;
+                     this.text2=av;
+                }
+
+                }
+                
+
+            },
+            watch: {
+                text1:function(newValue,oldValue){
+                    
+                   console.info('text1发生改变时，调用监视，并且赋值给text3');
+                  this.text3 = (newValue -0)
+                }
+            }
+
+        })
+
+        vm.$watch('text2',function(newValue){
+            console.info('text2发生改变时，调用监视，并且赋值给text3');
+            this.text3 = (newValue -0)
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vueJS学习3</title>
+</head>
+
+<body>
+    <!--class和style,用v-bind绑定属性，V-if,V-show条件渲染-->
+
+    <style>
+        .active {
+            color: green;
+        }
+
+        .delete {
+            background: red;
+        }
+
+        .error {
+            font-size: 30px;
+        }
+
+        .box{
+            width: 100px;
+            height: 100px;
+            background: orange;
+        }
+        .boa{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+    <div id="app">
+        <h4>Class綁定</h4>
+       <p v-bind:class="activeClass">字符串表達式</p>
+       <p :class="{delete:isDelete,error:haiError}">對象達式</p>
+       <p :class="['active','error']">對象達式</p>
+       <h4>Style綁定</h4>
+       <p v-bind:style="{color:activeColor,fontSize:fontsize +'px'}">Style綁定</p>
+
+       <h4>条件渲染</h4>
+       <input v-model="seen" type="checkbox">勾选后变成橘黄色小块
+       <div v-if="seen" class="box"></div>
+       <p v-else="seen">橘黄色块隐藏</p>
+       <div v-show="seen" class="boa"></div>
+
+    </div>
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                // class演示
+                activeClass:'active',
+                isDelete:true,
+                haiError:false,
+                // style演示
+                activeColor:'red',
+                fontsize:50,
+                seen:false
+
+            }
+
+        })
+
+
+    </script>
+</body>
+
+</html>
